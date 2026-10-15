@@ -1,0 +1,38 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "LGPL-3.0-or-later"
+[[mods]]
+modId = "boykryptoncompat"
+version = "1.0.0"
+displayName = "BO x Krypton Reno Compat"
+authors = "boykrypto"
+description = '''
+Keeps BandwidthOptimizer and Krypton Reno working together.
+
+Krypton Reno injects its optimized frame decoder into
+Varint21FrameDecoder.decode at HEAD and cancels unconditionally, which makes
+BandwidthOptimizer's own injection at the same point dead code and silently
+disables BO's internet-probe guard.
+
+This mod adds a higher-priority injection at the same point that runs
+BandwidthOptimizer's probe guard first, then lets Krypton Reno's optimized
+decoder run. Both mods' decode-level behaviour is preserved.
+
+Mixin priority is deliberately lower than Krypton Reno's (1000) so this
+injection runs first. Requires both BandwidthOptimizer and Krypton Reno;
+does nothing otherwise.
+'''
+
+[[dependencies.boykryptoncompat]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.boykryptoncompat]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "BOTH"

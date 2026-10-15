@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.boykrypto.compat.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "boykryptoncompat.refmap.json",
+  "plugin": "com.boykrypto.compat.BoyKryptonMixinPlugin",
+  "mixins": [
+    "Varint21FrameDecoderCompatMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
